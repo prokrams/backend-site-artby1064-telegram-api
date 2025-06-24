@@ -17,20 +17,21 @@ app.post('/send', async (req, res) => {
     
     const { name, phone, email, budget, desc, checkOptions, checkboxCheck, createAt } = req.body
 
-    if (!name || !phone || !checkboxCheck ) {
+    if (!name || !phone || !checkboxCheck !== true) {
         return res.status(400).send('Missing fields')
     }
 
     const safe = (val) => val ? val : '-'
+    const options = Array.isArray(checkOptions && checkOptions.length > 0 ? checkOptions.join(', ') : '-'
     const text = `
-        Новая заявка с сайта:\n\n 
-        Имя: ${safe(name)}\n 
-        Номер: ${safe(phone)}\n 
-        Почта: ${safe(email)}\n 
-        Бюджет: ${safe(budget)}\n 
-        Описание: ${safe(desc)}\n 
-        Выбранные опции: ${Array.isArray(checkOptions && checkOptions.length > 0 ? checkOptions.join(', ') : '-')}\n 
-        Политика: ${checkboxCheck === true ? 'ДА' : 'НЕТ'}\n 
+        Новая заявка с сайта:
+        Имя: ${safe(name)}
+        Номер: ${safe(phone)}
+        Почта: ${safe(email)}
+        Бюджет: ${safe(budget)}
+        Описание: ${safe(desc)}
+        Выбранные опции: ${options} 
+        Политика: ${checkboxCheck === true ? 'ДА' : 'НЕТ'}
         Отправлено: ${safe(createAt)}`
 
     try {
