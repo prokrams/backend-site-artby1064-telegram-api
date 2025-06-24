@@ -1,12 +1,13 @@
 require('dotenv').config()
 
 const express = require('express')
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args))
+const axios = require('axios')
 
 const app = express()
 const PORT = process.env.PORT || 3000
 
 const cors = require('cors')
+const { default: axios } = require('axios')
 app.use(cors({
     origin: 'http://localhost:5173'
     }
@@ -40,15 +41,19 @@ app.post('/send', async (req, res) => {
     console.log(text);
 
     try {
-        const telegramRes = await fetch(`https://api.telegram.org/bot${process.env.TOKEN}/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
+        const telegramRes = await axios.post(
+        `https://api.telegram.org/bot${process.env.TOKEN}/sendMessage`,
+        {
             chat_id: process.env.CHAT_ID,
             text,
-            parse_mode: 'Markdown'
-        }),
-        });
+            parse_mode: 'Markdown',
+        },
+        {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }
+    )
 
         const data = await telegramRes.json()
         if (!data.ok) {
