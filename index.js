@@ -36,6 +36,8 @@ app.post('/send', async (req, res) => {
         Выбранные опции: ${options} 
         Политика: ${checkboxCheck === true ? 'ДА' : 'НЕТ'}
         Отправлено: ${safe(createAt)}`
+    console.log('send:');
+    console.log(text);
 
     try {
         const telegramRes = await fetch(`https://api.telegram.org/bot${process.env.TOKEN}/sendMessage`, {
