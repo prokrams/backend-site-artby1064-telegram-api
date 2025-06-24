@@ -22,7 +22,7 @@ app.post('/send', async (req, res) => {
     }
 
     const safe = (val) => val ? val : '-'
-    const options = Array.isArray(checkOptions && checkOptions.length > 0 ? checkOptions.join(', ') : '-'
+    const options = Array.isArray(checkOptions && checkOptions.length > 0 ? checkOptions.join(', ') : '-')
     const text = `
         Новая заявка с сайта:
         Имя: ${safe(name)}
