@@ -17,10 +17,6 @@ app.post('/send', async (req, res) => {
     
     const { name, phone, email, budget, desc, checkOptions, checkboxCheck, createAt } = req.body
 
-    if (!name || !phone || !email || !budget || !desc || !checkOptions || !checkboxCheck || !createAt) {
-        return res.status(400).send('Missing fields')
-    }
-
     const text = `Новая заявка с сайта:\n\n Имя: ${name}\n Номер: ${phone}\n Почта: ${email}\n Бюджет: ${budget}\n Описание: ${desc}\n Выбранные опции: ${checkOptions}\n Политика: ${checkboxCheck}\n Отправлено: ${createAt}`
 
     try {
