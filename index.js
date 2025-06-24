@@ -12,6 +12,10 @@ app.use(cors({
     }
 ))
 
+if (!name || !phone || !checkboxCheck ) {
+        return res.status(400).send('Missing fields')
+}
+
 app.use(express.json())
 app.post('/send', async (req, res) => {
     
