@@ -39,3 +39,7 @@ app.post('/send', async (req, res) => {
         res.status(500).send('Telegram Error')
     }
 })
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`)
+})
