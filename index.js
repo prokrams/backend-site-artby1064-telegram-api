@@ -23,11 +23,7 @@ app.post('/send', async (req, res) => {
         console.log('checkboxCheck:', checkboxCheck, typeof checkboxCheck)
         return res.status(400).send('Missing fields')
     }
-
-    // function safeMD(text) {
-    //     if (!text) return ''
-    //     return text.replace(/([_*[\]()~`>#+-=|{}.!])/g, '\\$1')
-    // }
+    
     const safe = (val) => val ? val : '-'
     const options = Array.isArray(checkOptions) && checkOptions.length > 0 ? checkOptions.join(', ') : '-'
     const text = `
@@ -49,7 +45,6 @@ app.post('/send', async (req, res) => {
         {
             chat_id: process.env.CHAT_ID,
             text,
-            // parse_mode: 'Markdown',
         },
         {
             headers: {
