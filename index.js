@@ -28,21 +28,22 @@ app.post('/send', async (req, res) => {
     const options = Array.isArray(checkOptions) && checkOptions.length > 0 ? checkOptions.join(', ') : '-'
     const text = `
         Новая заявка с сайта:
-        👋Имя: ${safe(name)}
         
-        🪪Номер: ${safe(phone)}
+    👋Имя: ${safe(name)}
         
-        📬Почта: ${safe(email)}
+    🪪Номер: ${safe(phone)}
         
-        💸Бюджет: ${safe(budget)}
+    📬Почта: ${safe(email)}
         
-        📄Описание: ${safe(desc)}
+    💸Бюджет: ${safe(budget)}
         
-        📎Выбранные опции: ${options} 
+    📄Описание: ${safe(desc)}
         
-        🚨Политика: ${checkboxCheck === true ? 'ДА' : 'НЕТ'}
+    📎Выбранные опции: ${options} 
         
-        ⏳Отправлено: ${safe(createAt)}`
+    🚨Политика: ${checkboxCheck === true ? 'ДА' : 'НЕТ'}
+        
+    ⏳Отправлено: ${safe(createAt)}`
     console.log('send:');
     console.log(text);
 
