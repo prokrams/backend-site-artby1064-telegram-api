@@ -18,9 +18,6 @@ app.post('/send', async (req, res) => {
     const { name, phone, email, budget, desc, checkOptions, checkboxCheck, createAt } = req.body
 
     if (!name || !phone || checkboxCheck !== true) {
-        console.log('name:', name)
-        console.log('phone:', phone)
-        console.log('checkboxCheck:', checkboxCheck, typeof checkboxCheck)
         return res.status(400).send('Missing fields')
     }
     
