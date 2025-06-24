@@ -7,7 +7,6 @@ const app = express()
 const PORT = process.env.PORT || 3000
 
 const cors = require('cors')
-const { default: axios } = require('axios')
 app.use(cors({
     origin: 'http://localhost:5173'
     }
@@ -55,9 +54,9 @@ app.post('/send', async (req, res) => {
         }
     )
 
-        const data = await telegramRes.json()
+        const data = telegramRes.data
         if (!data.ok) {
-        throw new Error(data.description)
+            throw new Error(data.description)
         }
 
         res.status(200).send('OK')
