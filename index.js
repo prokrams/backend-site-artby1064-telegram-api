@@ -29,7 +29,7 @@ app.post('/send', async (req, res) => {
         Почта: ${safe(email)}\n 
         Бюджет: ${safe(budget)}\n 
         Описание: ${safe(desc)}\n 
-        Выбранные опции: ${Array.isArray(checkOptions && checkOptions.length > 0 ? checkOptions.join(', ') : '-'}\n 
+        Выбранные опции: ${Array.isArray(checkOptions && checkOptions.length > 0 ? checkOptions.join(', ') : '-')}\n 
         Политика: ${checkboxCheck === true ? 'ДА' : 'НЕТ'}\n 
         Отправлено: ${safe(createAt)}`
 
