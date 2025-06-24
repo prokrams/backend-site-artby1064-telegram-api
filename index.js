@@ -21,7 +21,16 @@ app.post('/send', async (req, res) => {
         return res.status(400).send('Missing fields')
     }
 
-    const text = `Новая заявка с сайта:\n\n Имя: ${name}\n Номер: ${phone}\n Почта: ${email}\n Бюджет: ${budget}\n Описание: ${desc}\n Выбранные опции: ${checkOptions}\n Политика: ${checkboxCheck}\n Отправлено: ${createAt}`
+    const text = `
+        Новая заявка с сайта:\n\n 
+        Имя: ${name}\n 
+        Номер: ${phone}\n 
+        Почта: ${email}\n 
+        Бюджет: ${budget}\n 
+        Описание: ${desc}\n 
+        Выбранные опции: ${checkOptions}\n 
+        Политика: ${checkboxCheck === true ? 'ДА' : 'НЕТ'}\n 
+        Отправлено: ${createAt}`
 
     try {
         const telegramRes = await fetch(`https://api.telegram.org/bot${process.env.TOKEN}/sendMessage`, {
