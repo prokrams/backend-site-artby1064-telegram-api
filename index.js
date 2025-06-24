@@ -6,6 +6,12 @@ const fetch = require('node-fetch')
 const app = express()
 const PORT = process.env.PORT || 3000
 
+const cors = require('cors')
+app.use(cors({
+    origin: 'http://localhost:3000'
+    }
+))
+
 app.use(express.json())
 app.post('/send', async (req, res) => {
     
