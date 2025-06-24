@@ -24,7 +24,11 @@ app.post('/send', async (req, res) => {
         return res.status(400).send('Missing fields')
     }
 
-    const safe = (val) => val ? val : '-'
+    function safeMD(text) {
+        if (!text) return ''
+        return text.replace(/([_*[\]()~`>#+-=|{}.!])/g, '\\$1')
+    }
+    const safe = (val) => val ? safeMD(String(val)) : '-'
     const options = Array.isArray(checkOptions) && checkOptions.length > 0 ? checkOptions.join(', ') : '-'
     const text = `
         Новая заявка с сайта:
