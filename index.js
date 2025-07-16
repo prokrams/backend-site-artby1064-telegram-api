@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000
 
 const cors = require('cors')
 app.use(cors({
-    origin: 'http://artby1064.ru'
+    origin: 'https://artby1064.ru'
     }
 ))
 
